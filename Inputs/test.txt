@@ -1,3 +1,2 @@
-Если у нас есть 20 сортировок, но если по сущности присущая натуральная сортировка, то ее можно и нужно вынести в Comparable, а остальные сортировки заимплементировать в Comparator. Если наиболее часто используемой и стандартной сортировки нет, то тогда нужно все сортировки вынести в Comparator.
-Если у нас есть 20 сортировок, но если по сущности присущая натуральная сортировка, то ее можно и нужно вынести в Comparable, а остальные сортировки заимплементировать в Comparator.
-Regex. Split in Java uses a Regex? A single character (word a comma) can be split upon! Or a more complex pattern (with character codes) can be used.
+This is a test file. This file is made to test fileAnalyzer! Do you think we can test this file?
+It's another paragraph where we have a test word, so it should be 4th sentence where it occurs.

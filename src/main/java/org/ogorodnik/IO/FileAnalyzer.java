@@ -5,20 +5,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 class FileAnalyzer {
-    String path;
-    String word;
+    String[] inputArguments;
 
-    public FileAnalyzer(String[] arguments) {
-        String[] validatedArguments = CommandLineArgumentsValidator.validateArguments(arguments);
-        this.path = validatedArguments[0];
-        this.word = validatedArguments[1];
+    public FileAnalyzer(String[] args) {
+        String[] validatedArguments = CommandLineArgumentsValidator.validateArguments(args);
+        this.inputArguments = validatedArguments;
     }
 
-    void checkNUmberOfWordInput(String path, String word) {
+    ArrayList<String> findSentensesWithWordInput(String path, String word) {
         File file = new File(path);
         BufferedReader bufferedReader;
         int count = 0;
         List<String> list = new ArrayList<>();
+        ArrayList<String> processedList = new ArrayList<>();
 
         try{
             bufferedReader = new BufferedReader(new FileReader(file));
@@ -30,15 +29,33 @@ class FileAnalyzer {
                 String[] sentences = paragraph.split("\\.|\\?|\\!");
                 for (String sentence: sentences){
                     if(sentence.contains(word)){
-                        System.out.println(sentence);
-                        count++;
+                        processedList.add(sentence);
                     }
                 }
             }
-            System.out.println(count);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        return processedList;
+    }
+
+    private void printSentencesWithReuestedWordAndWordOccurence(ArrayList<String> arrayList, String word){
+        if(arrayList.size() == 0){
+            System.out.println("\"" + word + "\" is not present in a file you provided");
+        } else {
+            System.out.println("\"" + word + "\" occurs " + arrayList.size() + " times");
+            System.out.println("please see sentences where the word occurs:");
+            for(String element:arrayList){
+                System.out.println(element);
+            }
+        }
+    }
+
+    void calculateAndPrintWordOccurence (String[] arguments){
+        String path = inputArguments[0];
+        String word = inputArguments[1];
+        printSentencesWithReuestedWordAndWordOccurence(
+                findSentensesWithWordInput(path, word), word);
     }
 
 
