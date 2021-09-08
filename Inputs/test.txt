@@ -1,2 +1,2 @@
 This is a test file. This file is made to test fileAnalyzer! Do you think we can test this file?
-It's another paragraph where we have a test word, so it should be 4th sentence where it occurs.
+It's another paragraph where we have a Test word, so it should be 4th sentence where it occurs.

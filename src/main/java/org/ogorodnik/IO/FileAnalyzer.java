@@ -4,12 +4,12 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+
 class FileAnalyzer {
     String[] inputArguments;
 
     public FileAnalyzer(String[] args) {
-        String[] validatedArguments = CommandLineArgumentsValidator.validateArguments(args);
-        this.inputArguments = validatedArguments;
+        this.inputArguments = CommandLineArgumentsValidator.validateArguments(args);
     }
 
     ArrayList<String> findSentensesWithWordInput(String path, String word) {
@@ -28,7 +28,7 @@ class FileAnalyzer {
             for(String paragraph: list){
                 String[] sentences = paragraph.split("\\.|\\?|\\!");
                 for (String sentence: sentences){
-                    if(sentence.contains(word)){
+                    if(sentence.toLowerCase().contains(word.toLowerCase())){
                         processedList.add(sentence);
                     }
                 }
