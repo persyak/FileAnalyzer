@@ -59,7 +59,7 @@ class FileAnalyzer {
     }
 
 
-    static class CommandLineArgumentsValidator {
+    private static class CommandLineArgumentsValidator {
         static String[] validateArguments(String[] arguments) {
             final int MIN_NUMBER_OF_ARGUMENTS = 2;
             if (arguments.length < MIN_NUMBER_OF_ARGUMENTS) {
