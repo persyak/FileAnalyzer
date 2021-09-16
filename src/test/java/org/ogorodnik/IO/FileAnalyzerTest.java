@@ -38,7 +38,7 @@ public class FileAnalyzerTest {
 
     @Test
     public void testArgumentsLessThanTwo() {
-        String[] arguments = new String[]{"d:\\Learning\\JAVA\\AT\\FileAnalyzer\\Inputs\\test.txt"};
+        String[] arguments = new String[]{"./Inputs/test.txt"};
         assertThrows(NullPointerException.class, () -> {
             FileAnalyzer fileAnalyzer = new FileAnalyzer(arguments);
         });
@@ -46,7 +46,7 @@ public class FileAnalyzerTest {
 
     @Test
     public void testAnyOfArgumentsIsNull(){
-        String[] arguments = new String[]{"d:\\Learning\\JAVA\\AT\\FileAnalyzer\\Inputs\\test.txt", null};
+        String[] arguments = new String[]{"./Inputs/test.txt", null};
         assertThrows(NullPointerException.class, () -> {
             new FileAnalyzer(arguments);
         });
@@ -57,7 +57,7 @@ public class FileAnalyzerTest {
 
     @Test
     public void testFileWithRequiredWord(){
-        String[] arguments = new String[]{".//Inputs//test.txt", "test"};
+        String[] arguments = new String[]{"./Inputs/test.txt", "test"};
         FileAnalyzer fileAnalyzer = new FileAnalyzer(arguments);
         String path = fileAnalyzer.inputArguments[0];
         String word = fileAnalyzer.inputArguments[1];

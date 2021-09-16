@@ -1,6 +1,7 @@
 package org.ogorodnik.IO;
 
 import java.io.*;
+import java.rmi.AccessException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,13 +15,18 @@ class FileAnalyzer {
 
     ArrayList<String> findSentensesWithWordInput(String path, String word) {
         File file = new File(path);
-        BufferedReader bufferedReader;
-        int count = 0;
+        if(!file.canRead()){
+            try {
+                throw new AccessException("File can't be read. Please check permissions");
+            } catch(AccessException e){
+                e.printStackTrace();
+            }
+        }
         List<String> list = new ArrayList<>();
         ArrayList<String> processedList = new ArrayList<>();
 
         try{
-            bufferedReader = new BufferedReader(new FileReader(file));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
 
             while(bufferedReader.ready()){
                 list.add(bufferedReader.readLine());
@@ -39,7 +45,7 @@ class FileAnalyzer {
         return processedList;
     }
 
-    private void printSentencesWithReuestedWordAndWordOccurence(ArrayList<String> arrayList, String word){
+    private void printSentencesWithReqestedWordAndWordOccurence(ArrayList<String> arrayList, String word){
         if(arrayList.size() == 0){
             System.out.println("\"" + word + "\" is not present in a file you provided");
         } else {
@@ -54,7 +60,7 @@ class FileAnalyzer {
     void calculateAndPrintWordOccurence (String[] arguments){
         String path = inputArguments[0];
         String word = inputArguments[1];
-        printSentencesWithReuestedWordAndWordOccurence(
+        printSentencesWithReqestedWordAndWordOccurence(
                 findSentensesWithWordInput(path, word), word);
     }
 
