@@ -10,37 +10,17 @@
     <packaging>jar</packaging>
 
     <properties>
-        <!-- Dependency versions -->
-        <junit.jupiter.version>5.7.2</junit.jupiter.version>
-
-        <!-- Java 16 -->
-        <java.version>16</java.version>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
     </properties>
 
-    <!-- Jupiter API for writing tests -->
     <dependencies>
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>${junit.jupiter.version}</version>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.1</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <!-- Maven Surefire plugin to run tests -->
-    <build>
-        <plugins>
-            <!-- Maven plugin to use particular java version to compile code -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
-                <configuration>
-                    <source>16</source>
-                    <target>16</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>
