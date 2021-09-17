@@ -1,22 +1,20 @@
 package org.ogorodnik.IO;
 
-
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FileAnalyzerTest {
 
-    @Before
+    @BeforeEach
     public void before() throws IOException {
         new File("Inputs").mkdir();
         new File("Inputs/test.txt").createNewFile();
@@ -71,7 +69,7 @@ public class FileAnalyzerTest {
         assertEquals(1, fileAnalyzer.findSentensesWithWordInput(path, "сейчас").size());
     }
 
-    @After
+    @AfterEach
     public void after(){
         new File("Inputs/test.txt").delete();
         new File("Inputs").delete();
