@@ -28,10 +28,10 @@ public class FileAnalyzerTest {
     @Test
     public void testReadFileAndWordFromCommandLine() {
         String[] arguments = new String[2];
-        arguments[0] = ".//Inputs//test.txt";
+        arguments[0] = "./Inputs/test.txt";
         arguments[1] = "test";
         FileAnalyzer fileAnalyzer = new FileAnalyzer(arguments);
-        assertEquals(".//Inputs//test.txt",
+        assertEquals("./Inputs/test.txt",
                 fileAnalyzer.inputArguments[0]);
         assertEquals("test", fileAnalyzer.inputArguments[1]);
     }
