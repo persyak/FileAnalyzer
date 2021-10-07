@@ -49,7 +49,7 @@ public class FileAnalyzerTest {
     }
 
     @Test
-    public void testAnyOfArgumentsIsNull(){
+    public void testAnyOfArgumentsIsNull() {
         String[] arguments = new String[]{"./Inputs/test.txt", null};
         assertThrows(NullPointerException.class, () -> {
             new FileAnalyzer(arguments);
@@ -60,7 +60,7 @@ public class FileAnalyzerTest {
     }
 
     @Test
-    public void testFileWithRequiredWord(){
+    public void testFileWithRequiredWord() {
         String[] arguments = new String[]{"./Inputs/test.txt", "test"};
         FileAnalyzer fileAnalyzer = new FileAnalyzer(arguments);
         String path = fileAnalyzer.inputArguments[0];
@@ -70,7 +70,7 @@ public class FileAnalyzerTest {
     }
 
     @AfterEach
-    public void after(){
+    public void after() {
         new File("Inputs/test.txt").delete();
         new File("Inputs").delete();
     }
