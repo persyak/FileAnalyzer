@@ -79,12 +79,9 @@ class FileAnalyzer {
             } else {
                 File file = new File(arguments[0]);
                 if (!file.exists()) {
-                    try {
-                        throw new FileNotFoundException("File does not exist or your path is not in a correct" +
-                                " format. Please check first command line param: " + arguments[0]);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    throw new RuntimeException(
+                        new FileNotFoundException("File does not exist or your path is not in a correct" +
+                                " format. Please check first command line param: " + arguments[0]));
                 }
             }
             return arguments;
