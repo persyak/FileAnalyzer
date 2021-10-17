@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -23,7 +24,7 @@ public class FileAnalyzerTest {
         bufferedWriter.newLine();
         bufferedWriter.write("It's another paragraph where we have a Test word, so it should be 4th sentence where it occurs.");
         bufferedWriter.newLine();
-        bufferedWriter.write("А сейчас добавим предложение на русском языке со словом test.");
+        bufferedWriter.write("Now another sentence with the word test.");
         bufferedWriter.flush();
         bufferedWriter.close();
     }
@@ -60,13 +61,13 @@ public class FileAnalyzerTest {
     }
 
     @Test
-    public void testFileWithRequiredWord() {
+    public void testFileWithRequiredWord() throws IOException {
         String[] arguments = new String[]{"./Inputs/test.txt", "test"};
         FileAnalyzer fileAnalyzer = new FileAnalyzer(arguments);
         String path = fileAnalyzer.inputArguments[0];
         String word = fileAnalyzer.inputArguments[1];
-        assertEquals(5, fileAnalyzer.findSentensesWithWordInput(path, word).size());
-        assertEquals(1, fileAnalyzer.findSentensesWithWordInput(path, "сейчас").size());
+        FileAnalyzer.Result result = fileAnalyzer.findSentensesWithWordInput(path, word);
+        assertEquals(5, result.count);
     }
 
     @AfterEach
