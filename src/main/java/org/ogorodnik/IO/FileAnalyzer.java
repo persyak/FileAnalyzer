@@ -1,7 +1,6 @@
 package org.ogorodnik.IO;
 
 import java.io.*;
-import java.rmi.AccessException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,17 +13,20 @@ class FileAnalyzer {
     }
 
     private String readContent(String path) throws IOException {
-        return readContent(new FileInputStream(path));
+        String pathName = new File(path).getPath();
+        try(FileInputStream fileInputStream = new FileInputStream(pathName)) {
+            return readContent(fileInputStream);
+        }
     }
 
     private String readContent(InputStream inputStream) throws IOException {
         byte[] byteContent = inputStream.readAllBytes();
-        StringBuilder stringBuilder = new StringBuilder();
-        for (byte element : byteContent) {
-            if (element != '\n') {
-                stringBuilder.append((char) element);
+            StringBuilder stringBuilder = new StringBuilder();
+            for (byte element : byteContent) {
+                if (element != '\n') {
+                    stringBuilder.append((char) element);
+                }
             }
-        }
         return stringBuilder.toString();
     }
 
